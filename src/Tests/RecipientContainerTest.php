@@ -3,10 +3,10 @@
 namespace Daa\Library\Mail\Tests;
 
 use Daa\Library\Mail\RecipientContainer;
+use PHPUnit\Framework\TestCase;
 
-class RecipientContainerTest extends \PHPUnit_Framework_TestCase
+class RecipientContainerTest extends TestCase
 {
-
     /**
      * @test
      */

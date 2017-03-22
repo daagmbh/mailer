@@ -9,7 +9,6 @@ namespace Daa\Library\Mail\Message;
  */
 trait AttachmentMessageTrait
 {
-
     /**
      * @var Attachment[]
      */

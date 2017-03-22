@@ -7,7 +7,6 @@ use Daa\Library\Mail\Sender\SenderInterface;
 
 class Mail implements MailInterface
 {
-
     /**
      * @var SenderInterface
      */

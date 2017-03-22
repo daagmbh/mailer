@@ -4,13 +4,14 @@ namespace Daa\Library\Mail\Tests\TemplateResolver;
 
 use Daa\Library\Mail\Message\MessageInterface;
 use Daa\Library\Mail\TemplateResolver\SymfonyTranslatorResolver;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 
 /**
  * Test the symfony translation resolver.
  */
-class SymfonyTranslatorResolverTest extends \PHPUnit_Framework_TestCase
+class SymfonyTranslatorResolverTest extends TestCase
 {
 
     /**
@@ -39,7 +40,7 @@ class SymfonyTranslatorResolverTest extends \PHPUnit_Framework_TestCase
         $translator->addResource('array', ['subject' => 'Hello World'], 'en_US');
 
         $this->resolver = new SymfonyTranslatorResolver($translator);
-        $this->message = $this->getMock(MessageInterface::class);
+        $this->message = $this->createMock(MessageInterface::class);
     }
 
     /**

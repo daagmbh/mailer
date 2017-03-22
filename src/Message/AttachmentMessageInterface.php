@@ -9,7 +9,6 @@ namespace Daa\Library\Mail\Message;
  */
 interface AttachmentMessageInterface extends MessageInterface
 {
-
     /**
      * Returns the attachments of this mail.
      *

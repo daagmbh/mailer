@@ -2,6 +2,7 @@
 
 namespace Daa\Library\Mail;
 
+use Closure;
 use Daa\Library\Mail\Message\MailInterface;
 use Daa\Library\Mail\Message\MessageInterface;
 use Daa\Library\Mail\Sender\SenderInterface;

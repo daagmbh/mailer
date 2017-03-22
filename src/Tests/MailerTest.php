@@ -11,6 +11,7 @@ use Daa\Library\Mail\TemplateRenderer\TemplateRendererInterface;
 use Daa\Library\Mail\TemplateResolver\TemplateResolverInterface;
 use Daa\Library\Mail\Transport\TransportInterface;
 use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -18,7 +19,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 /**
  * Tests the mailer.
  */
-class MailerTest extends \PHPUnit_Framework_TestCase
+class MailerTest extends TestCase
 {
 
     /**

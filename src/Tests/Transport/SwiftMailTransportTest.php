@@ -6,16 +6,14 @@ use Daa\Library\Mail\Message\Attachment;
 use Daa\Library\Mail\Message\Mail;
 use Daa\Library\Mail\RecipientContainer;
 use Daa\Library\Mail\Sender\SmtpSender;
-use Daa\Library\Mail\TemplateResolver\TemplateResolverInterface;
 use Daa\Library\Mail\Transport\SwiftMailTransport;
-use Prophecy\Prophecy\ObjectProphecy;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This class tests the SwiftMailTransport.
  */
-class SwiftMailTransportTest extends \PHPUnit_Framework_TestCase
+class SwiftMailTransportTest extends TestCase
 {
-
     /**
      * Skip tests if swift mailer is not installed
      */

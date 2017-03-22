@@ -86,6 +86,6 @@ And that's it. Easy, huh?
 ## Advanced Usage
 You can extend this library to allow some more advanced usages. For example, you can embedd your own template resolver and renderer.
 
-##License
+## License
 
 The MIT License (MIT). Please see License File for more information.

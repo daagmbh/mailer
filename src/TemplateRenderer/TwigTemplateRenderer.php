@@ -2,7 +2,6 @@
 
 namespace Daa\Library\Mail\TemplateRenderer;
 
-use Daa\Component\Common\Mail\Twig\MailerExtension;
 use Twig_Error_Runtime;
 
 /**
