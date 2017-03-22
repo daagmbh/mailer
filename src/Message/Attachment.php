@@ -4,7 +4,6 @@ namespace Daa\Library\Mail\Message;
 
 class Attachment
 {
-
     /**
      * @var string
      */
@@ -48,18 +47,6 @@ class Attachment
     }
 
     /**
-     * @param string $filename
-     *
-     * @return $this
-     */
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getContentType()
@@ -68,35 +55,11 @@ class Attachment
     }
 
     /**
-     * @param string $contentType
-     *
-     * @return $this
-     */
-    public function setContentType($contentType)
-    {
-        $this->contentType = $contentType;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * @param string $content
-     *
-     * @return $this
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
     }
 
     /**

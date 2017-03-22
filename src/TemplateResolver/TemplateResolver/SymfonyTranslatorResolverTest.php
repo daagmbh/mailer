@@ -1,6 +1,6 @@
 <?php
 
-namespace Daa\Library\Mail\Tests\TemplateResolver;
+namespace Daa\Library\Mail\TemplateResolver\Tests;
 
 use Daa\Library\Mail\Message\MessageInterface;
 use Daa\Library\Mail\TemplateResolver\SymfonyTranslatorResolver;

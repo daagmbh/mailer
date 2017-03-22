@@ -2,14 +2,13 @@
 
 namespace Daa\Library\Mail\TemplateRenderer;
 
-use Twig_Error_Runtime;
+use Twig_Error;
 
 /**
  * Render mail templates with twig.
  */
 class TwigTemplateRenderer implements TemplateRendererInterface
 {
-
     /**
      * @var \Twig_Environment
      */
@@ -74,7 +73,7 @@ class TwigTemplateRenderer implements TemplateRendererInterface
 
         try {
             $template = $this->twig->createTemplate($template)->render($parameters);
-        } catch (Twig_Error_Runtime $e) {
+        } catch (Twig_Error $e) {
             throw TemplateRenderingException::renderingFailed($templateKey, $e);
         }
 

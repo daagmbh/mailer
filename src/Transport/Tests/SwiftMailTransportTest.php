@@ -1,6 +1,6 @@
 <?php
 
-namespace Daa\Library\Mail\Tests\Transport;
+namespace Daa\Library\Mail\Transport\Tests;
 
 use Daa\Library\Mail\Message\Attachment;
 use Daa\Library\Mail\Message\Mail;
@@ -46,7 +46,8 @@ class SwiftMailTransportTest extends TestCase
             ->setBodyHtml('<strong>Hello World</strong>')
             ->setRecipients($recipients)
             ->setSender($sender)
-            ->addAttachment(new Attachment('hi', 'hi.txt', 'text/plain'))
+            ->addAttachment(new Attachment('hi1', 'hi.txt', 'text/plain'))
+            ->addAttachment((new Attachment('hi2', 'hi.txt', 'text/plain'))->setDisposition('inline'))
         ;
 
         $transport = new SwiftMailTransport();
@@ -64,9 +65,16 @@ class SwiftMailTransportTest extends TestCase
         $this->assertEquals('text/html', $htmlPart->getContentType());
         $this->assertEquals($mail->getBodyHtml(), $htmlPart->getBody());
 
-        // Assert attachment is there
+        // Assert first attachment is there
         $attachmentPart = $swiftMessage->getChildren()[1];
         $this->assertEquals('text/plain', $attachmentPart->getContentType());
-        $this->assertEquals('hi', $attachmentPart->getBody());
+        $this->assertEquals('hi1', $attachmentPart->getBody());
+        $this->assertEquals('attachment', $attachmentPart->getDisposition());
+
+        // Assert second attachment is there
+        $attachmentPart = $swiftMessage->getChildren()[2];
+        $this->assertEquals('text/plain', $attachmentPart->getContentType());
+        $this->assertEquals('hi2', $attachmentPart->getBody());
+        $this->assertEquals('inline', $attachmentPart->getDisposition());
     }
 }

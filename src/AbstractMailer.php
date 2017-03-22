@@ -156,13 +156,6 @@ abstract class AbstractMailer implements MailerInterface
         // then render the body
         $parameters['mail_subject'] = $mail->getSubject();
 
-        if ($message instanceof SkipTemplateInterface) {
-            $mail->setBodyText($message->getMailText());
-            $mail->setBodyHtml($message->getHtmlText());
-
-            return;
-        }
-
         $template = $this->templateResolver->resolveTemplate(
             $message->getTemplateKey(),
             $message->getLocale(),
@@ -185,10 +178,6 @@ abstract class AbstractMailer implements MailerInterface
      */
     protected function generateSubject(MessageInterface $message, array $parameters)
     {
-        if ($message instanceof SkipTemplateInterface) {
-            return $message->getSubject();
-        }
-
         $subjectTemplate = $this->templateResolver->resolveTemplate(
             $message->getSubjectKey(),
             $message->getLocale(),
