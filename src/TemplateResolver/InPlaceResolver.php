@@ -9,7 +9,6 @@ use Daa\Library\Mail\Message\MessageInterface;
  */
 class InPlaceResolver implements TemplateResolverInterface
 {
-
     /**
      * @param string           $template
      * @param string           $locale
