@@ -108,6 +108,17 @@ class RecipientContainerTest extends TestCase
     }
 
     /**
+     * @test
+     */
+    public function testTestIdnDomains()
+    {
+        $recipients = new RecipientContainer('info@hello-wööörld.de', 'wööörld@hello-wööörld.de');
+
+        $this->assertEquals(['info@xn--hello-wrld-kcbaa.de' => null], $recipients->getTo());
+        $this->assertEquals(['xn--wrld-5qaaa@xn--hello-wrld-kcbaa.de' => null], $recipients->getCc());
+    }
+
+    /**
      * Performs the tests for a specific recipient type.
      *
      * @param string $type

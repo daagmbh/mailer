@@ -180,8 +180,25 @@ class RecipientContainer implements RecipientContainerInterface
             return $this;
         }
 
+        $email = $this->convertIdn($email);
         $list[$email] = $name;
 
         return $this;
+    }
+
+    /**
+     * Convert the given email address into IDNA ascii format.
+     *
+     * @param string $email
+     *
+     * @return string
+     */
+    private function convertIdn($email)
+    {
+        list($name, $domain) = explode('@', $email);
+        $domain = idn_to_ascii($domain);
+        $name = idn_to_ascii($name);
+
+        return sprintf('%s@%s', $name, $domain);
     }
 }
