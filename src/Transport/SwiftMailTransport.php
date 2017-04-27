@@ -14,7 +14,6 @@ use Swift_SmtpTransport;
  */
 class SwiftMailTransport implements TransportInterface
 {
-
     /**
      * Send the given mail.
      *

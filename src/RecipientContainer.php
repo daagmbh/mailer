@@ -7,7 +7,6 @@ namespace Daa\Library\Mail;
  */
 class RecipientContainer implements RecipientContainerInterface
 {
-
     /**
      * @var string[]
      */

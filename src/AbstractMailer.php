@@ -3,7 +3,7 @@
 namespace Daa\Library\Mail;
 
 use Closure;
-use Daa\Component\Common\Mail\Marker\SkipTemplateInterface;
+use Daa\Library\Mail\Event\MailerEvent;
 use Daa\Library\Mail\Message\AttachmentMessageInterface;
 use Daa\Library\Mail\Message\Mail;
 use Daa\Library\Mail\Message\MailInterface;
@@ -21,7 +21,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 abstract class AbstractMailer implements MailerInterface
 {
-
     /**
      * Contains all senders grouped by id and locale.
      *

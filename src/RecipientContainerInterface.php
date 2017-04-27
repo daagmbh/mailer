@@ -7,7 +7,6 @@ namespace Daa\Library\Mail;
  */
 interface RecipientContainerInterface
 {
-
     /**
      * Returns true if there is at least one recipient.
      *

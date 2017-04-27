@@ -12,7 +12,6 @@ use Daa\Library\Mail\Sender\SenderInterface;
  */
 interface MailerInterface
 {
-
     /**
      * Get the sender object for the given id and locale.
      *

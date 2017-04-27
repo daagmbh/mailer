@@ -9,7 +9,6 @@ use Daa\Library\Mail\Message\MessageInterface;
  */
 interface TemplateResolverInterface
 {
-
     /**
      * Resolve the given template into the given locale. Additionally, the message object is passed
      * to allow different translations based on a specific message.

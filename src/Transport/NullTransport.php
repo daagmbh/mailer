@@ -9,7 +9,6 @@ use Daa\Library\Mail\Message\MailInterface;
  */
 class NullTransport implements TransportInterface
 {
-
     /**
      * Send the given mail.
      *

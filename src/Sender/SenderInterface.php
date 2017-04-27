@@ -9,7 +9,6 @@ namespace Daa\Library\Mail\Sender;
  */
 interface SenderInterface
 {
-
     /**
      * Returns the translation key of the sender's name.
      *

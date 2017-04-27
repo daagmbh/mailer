@@ -2,7 +2,9 @@
 
 namespace Daa\Library\Mail\Tests;
 
+use Daa\Library\Mail\Event\MailSendingEvent;
 use Daa\Library\Mail\Mailer;
+use Daa\Library\Mail\MailerEvents;
 use Daa\Library\Mail\Message\Attachment;
 use Daa\Library\Mail\Message\AttachmentMessageInterface;
 use Daa\Library\Mail\Message\AttachmentMessageTrait;
@@ -25,7 +27,6 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  */
 class MailerTest extends TestCase
 {
-
     /**
      * @var Mailer
      */
@@ -42,7 +43,7 @@ class MailerTest extends TestCase
     private $templateRenderer;
 
     /**
-     * @var EventDispatcher
+     * @var EventDispatcher|ObjectProphecy
      */
     private $eventDispatcher;
 
@@ -107,7 +108,7 @@ class MailerTest extends TestCase
     /**
      * @test
      */
-    public function testTransmission()
+    public function testMailSending()
     {
         $message = $this->createMessage();
 
@@ -118,6 +119,42 @@ class MailerTest extends TestCase
         // register sender
         $this->mailer->registerSender('test', 'de_DE', new NullSender());
         $this->mailer->registerTransport(NullSender::class, $transport->reveal());
+
+        // Handle events
+        $dispatchedEvents = 0;
+        $this->eventDispatcher->addListener(MailerEvents::beforeSending, function () use (&$dispatchedEvents) {
+            $dispatchedEvents++;
+        });
+        $this->eventDispatcher->addListener(MailerEvents::afterSending, function () use (&$dispatchedEvents) {
+            $dispatchedEvents++;
+        });
+
+        $this->mailer->sendMessage($message);
+        $this->assertEquals(2, $dispatchedEvents, 'Not all expected events dispatched');
+    }
+
+    /**
+     * @test
+     */
+    public function testMailSendingStopped()
+    {
+        $message = $this->createMessage();
+
+        // mock transport
+        $transport = $this->prophesize(TransportInterface::class);
+        $transport->sendMail()->shouldNotBeCalled();
+
+        // register sender
+        $this->mailer->registerSender('test', 'de_DE', new NullSender());
+        $this->mailer->registerTransport(NullSender::class, $transport->reveal());
+
+        // Handle events
+        $this->eventDispatcher->addListener(MailerEvents::beforeSending, function (MailSendingEvent $e) {
+            $e->stopSendingMail();
+        });
+        $this->eventDispatcher->addListener(MailerEvents::afterSending, function () {
+            $this->fail('After sending event dispatched even though mail sending was stopped');
+        });
 
         $this->mailer->sendMessage($message);
     }

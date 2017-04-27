@@ -4,7 +4,6 @@ namespace Daa\Library\Mail\Sender;
 
 class NullSender implements SenderInterface
 {
-
     /**
      * Returns the translation key of the sender's name.
      *

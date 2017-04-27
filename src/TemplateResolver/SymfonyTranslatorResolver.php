@@ -10,7 +10,6 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class SymfonyTranslatorResolver implements TemplateResolverInterface
 {
-
     /**
      * @var TranslatorInterface
      */

@@ -4,7 +4,6 @@ namespace Daa\Library\Mail\Sender;
 
 class SmtpSender implements SenderInterface
 {
-
     /**
      * @var string
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Daa\Library\Mail;
+namespace Daa\Library\Mail\Event;
 
 use Daa\Library\Mail\Message\MailInterface;
 use Daa\Library\Mail\Message\MessageInterface;
@@ -8,11 +8,10 @@ use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Event class with payload for mailer events. Depending on the event,
- * either the message or mail class (or both) are available.
+ * either the message or mail object (or both) are available.
  */
 class MailerEvent extends Event
 {
-
     /**
      * @var MessageInterface|null
      */

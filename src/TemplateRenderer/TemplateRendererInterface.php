@@ -4,7 +4,6 @@ namespace Daa\Library\Mail\TemplateRenderer;
 
 interface TemplateRendererInterface
 {
-
     /**
      * Render the template as text with the given parameters.
      *

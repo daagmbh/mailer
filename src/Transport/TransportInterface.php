@@ -9,7 +9,6 @@ use Daa\Library\Mail\Message\MailInterface;
  */
 interface TransportInterface
 {
-
     /**
      * Send the given mail.
      *

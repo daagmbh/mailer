@@ -9,7 +9,6 @@ namespace Daa\Library\Mail;
  */
 final class MailerEvents
 {
-
     const beforeRendering = 'mailer.before_rendering';
     const afterRendering = 'mailer.after_rendering';
 

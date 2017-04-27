@@ -2,6 +2,7 @@
 
 namespace Daa\Library\Mail;
 
+use Daa\Library\Mail\Event\MailSendingEvent;
 use Daa\Library\Mail\Message\MailInterface;
 use Daa\Library\Mail\Sender\NullSender;
 use Daa\Library\Mail\Sender\SmtpSender;
@@ -17,7 +18,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 class Mailer extends AbstractMailer
 {
-
     /**
      * @var TransportInterface[]
      */
@@ -55,11 +55,14 @@ class Mailer extends AbstractMailer
      */
     public function sendMail(MailInterface $mail)
     {
-        $this->eventDispatcher->dispatch(MailerEvents::beforeSending, new MailerEvent(null, $mail));
+        $event = new MailSendingEvent($mail);
+        $this->eventDispatcher->dispatch(MailerEvents::beforeSending, $event);
 
-        $transport = $this->transports[get_class($mail->getSender())];
-        $transport->sendMail($mail);
+        if (!$event->isSendingStopped()) {
+            $transport = $this->transports[get_class($mail->getSender())];
+            $transport->sendMail($mail);
 
-        $this->eventDispatcher->dispatch(MailerEvents::afterSending, new MailerEvent(null, $mail));
+            $this->eventDispatcher->dispatch(MailerEvents::afterSending, $event);
+        }
     }
 }

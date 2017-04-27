@@ -10,7 +10,6 @@ use Daa\Library\Mail\Sender\SenderInterface;
  */
 interface MailInterface
 {
-
     /**
      * @return SenderInterface
      */

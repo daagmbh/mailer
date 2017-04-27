@@ -10,7 +10,6 @@ use LogicException;
  */
 class TemplateRenderingException extends LogicException
 {
-
     /**
      * @param string    $templateKey
      * @param Exception $originalException

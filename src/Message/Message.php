@@ -9,7 +9,6 @@ use Daa\Library\Mail\RecipientContainerInterface;
  */
 class Message implements MessageInterface
 {
-
     /**
      * @var string
      */

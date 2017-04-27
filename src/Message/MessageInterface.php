@@ -10,7 +10,6 @@ use Daa\Library\Mail\RecipientContainerInterface;
  */
 interface MessageInterface
 {
-
     /**
      * Returns the locale of this mail.
      *
