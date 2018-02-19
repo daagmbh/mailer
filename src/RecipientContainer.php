@@ -195,8 +195,8 @@ class RecipientContainer implements RecipientContainerInterface
     private function convertIdn($email)
     {
         list($name, $domain) = explode('@', $email);
-        $domain = idn_to_ascii($domain);
-        $name = idn_to_ascii($name);
+        $domain = idn_to_ascii($domain, 0, INTL_IDNA_VARIANT_UTS46);
+        $name = idn_to_ascii($name, 0, INTL_IDNA_VARIANT_UTS46);
 
         return sprintf('%s@%s', $name, $domain);
     }
