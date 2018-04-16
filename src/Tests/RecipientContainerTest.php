@@ -115,7 +115,7 @@ class RecipientContainerTest extends TestCase
         $recipients = new RecipientContainer('info@hello-wööörld.de', 'wööörld@hello-wööörld.de');
 
         $this->assertEquals(['info@xn--hello-wrld-kcbaa.de' => null], $recipients->getTo());
-        $this->assertEquals(['xn--wrld-5qaaa@xn--hello-wrld-kcbaa.de' => null], $recipients->getCc());
+        $this->assertEquals(['wööörld@xn--hello-wrld-kcbaa.de' => null], $recipients->getCc());
     }
 
     /**
